@@ -1,3 +1,5 @@
+This is a very early version. Good to play around with, but probably not anything more than that.
+
 ================
 MSGR - Mesenger
 ================
