@@ -1,0 +1,5 @@
+include README.rst
+recursive-include management *
+recursive-include utils *
+recursive-include docs *
+
