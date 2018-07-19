@@ -1,10 +1,9 @@
 from django.conf.urls import patterns, include, url
-from views import FBMessengerProcessor
+from . import views as v
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'rsmessenger.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+urlpatterns = [
+    url(r'^fbmsg/$',
+        v.FBMessengerProcessor.as_view(),
+        name='msgr-fb-message-processor'),
+]
 
-    url(r'^fbmsg/$', FBMessengerProcessor.as_view(), name='msgr-fb-message-processor'),
-)
