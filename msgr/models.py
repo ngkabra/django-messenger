@@ -1,3 +1,5 @@
+from __future__ import division
+
 from django.db import models
 from django.contrib.auth.models import User
 
@@ -255,17 +257,8 @@ def _create_new_message(user, mtype, inout, message, reply_mid=None):
     elif reply_mid:
         msg.mid = reply_mid
 
-    # no need to convert to TimeZone, keep in UTC
-    '''
-    tz_india = pytz.timezone('Asia/Kolkata')
     if isinstance(message, dict) and message['timestamp']:
-        msg.timestamp = datetime.fromtimestamp(int(message['timestamp']/1000)).replace(tzinfo=pytz.UTC).astimezone(tz_india)
-    else:  #for sent messages
-        msg.timestamp = datetime.now().replace(tzinfo=pytz.UTC).astimezone(tz_india)
-    '''
-
-    if isinstance(message, dict) and message['timestamp']:
-        msg.timestamp = datetime.fromtimestamp(int(message['timestamp']/1000))
+        msg.timestamp = datetime.fromtimestamp(int(message['timestamp']//1000))
     else:  # for sent messages
         msg.timestamp = datetime.now()
 
