@@ -1,3 +1,5 @@
+from __future__ import print_function
+from __future__ import absolute_import
 import json
 
 from django.http import HttpResponse
@@ -5,9 +7,9 @@ from django.views.generic import View
 from django.utils.decorators import method_decorator
 from django.views.decorators.csrf import csrf_exempt
 
-from utils.msgr_utils import FBUtils
-import models as md
-import settings as st
+from .utils.msgr_utils import FBUtils
+from . import models as md
+from . import settings as st
 
 
 class FBMessengerProcessor(View):
@@ -87,10 +89,10 @@ class FBMessengerProcessor(View):
                                 reply_msg = msg_handler(user, msg)
                             user.send_text(reply_msg)
                         else:
-                            print "Duplicate message (not replying):", msg.mid
+                            print("Duplicate message (not replying):", msg.mid)
 
                 else:
-                    print "Ignoring non-message/delivery:", json_data
+                    print("Ignoring non-message/delivery:", json_data)
 
         # just return blank response
         return HttpResponse()

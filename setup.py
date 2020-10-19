@@ -9,7 +9,7 @@ os.chdir(os.path.normpath(os.path.join(os.path.abspath(__file__), os.pardir)))
 
 setup(
     name='django-messenger',
-    version='0.04',
+    version='0.05',
     packages=['msgr', 'msgr.utils', 'msgr.management', 'msgr.management.commands'],
     include_package_data=True,
     description='A simple Django app to interact with social-media messengers',
@@ -24,6 +24,7 @@ setup(
         'Operating System :: OS Independent',
         'Programming Language :: Python',        
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.6',
         'Topic :: Internet :: WWW/HTTP',
         'Topic :: Internet :: WWW/HTTP :: Dynamic Content',
     ],

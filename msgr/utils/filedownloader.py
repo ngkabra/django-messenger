@@ -1,3 +1,4 @@
+from __future__ import print_function
 import threading
 
 
@@ -11,7 +12,7 @@ class DownloadThread(threading.Thread):
         try:
             status = self.message.download_media()
             if not status:
-                print "Failed to download media:", self.message.media_url
-        except Exception, e:
-            print "   Error: %s"%e
+                print("Failed to download media:", self.message.media_url)
+        except Exception as e:
+            print("   Error: %s"%e)
 
