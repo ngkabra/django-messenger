@@ -41,7 +41,8 @@ class MessengerUser(models.Model):
     lname = models.CharField(max_length=100, null=True)
     email = models.EmailField(null=True)
     phone = models.CharField(max_length=16, null=True)
-    django_user = models.ForeignKey(User, null=True)
+    django_user = models.ForeignKey(User, null=True,
+                                    on_delete=models.CASCADE)
 
     def link_user(self, d_user):
         if d_user:
@@ -191,7 +192,7 @@ class Message(models.Model):
         (RCVD, "Received"),
         (SENT, "Sent")
     )
-    sender = models.ForeignKey(MessengerUser)
+    sender = models.ForeignKey(MessengerUser, on_delete=models.CASCADE)
     mid = models.CharField(max_length=255, null=True, unique=True)
     mtype = models.CharField(max_length=3,choices=TYPE_CHOICES, default=TXT)
     inout = models.CharField(max_length=4,choices=MSG_INOUT_CHOICES, default=RCVD)
